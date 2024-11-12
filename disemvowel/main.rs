@@ -15,20 +15,33 @@ fn main() {
 
     //TODO: Panic if not enough arguments are provided
     //Panic should output the string "Not enough arguments"
-
+    if args.len() < 3 {
+        panic!("Not enough arguments");
+    }
     //TODO:
     //  * Pass an argument to read_file to read the original text
     //  * Pass that to disemvowel to remove the vowels
     //  * Write the disemvoweled text using write_file
+    // Read the original text from the file
+    let input_file = &args[1];
+    let output_file = &args[2];
 
-    // Replace String::from("dummy text") with what you get from read_file
-    let s = String::from("dummy text");
+    let input_text = read_file(Path::new(input_file));
 
-    let s_disemvowel = disemvowel(&s);
+    // Disemvowel the text
+    let disemvoweled_text = disemvowel(&input_text);
 
-    // Use command-line arguments for the name of the file,
-    // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    // Write the disemvoweled text to the output file
+    write_file(Path::new(output_file), &disemvoweled_text);
+
+    // // Replace String::from("dummy text") with what you get from read_file
+    // let s = String::from("dummy text");
+
+    // let _s_disemvowel = disemvowel(&s);
+
+    // // Use command-line arguments for the name of the file,
+    // // and s_disemvowel for the text to write out.
+    // write_file(Path::new("dummy.txt"), "output string");
 }
 
 fn read_file(path: &Path) -> String {
