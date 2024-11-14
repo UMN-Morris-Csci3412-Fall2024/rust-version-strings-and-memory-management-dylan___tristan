@@ -15,9 +15,14 @@ fn main() {
 
     //TODO: Panic if not enough arguments are provided
     //Panic should output the string "Not enough arguments"
+    // if args.len() < 3 {
+    //     panic!("Not enough arguments");
+    // }
     if args.len() < 3 {
-        panic!("Not enough arguments");
+        eprintln!("Not enough arguments");
+        std::process::exit(1);
     }
+
     //TODO:
     //  * Pass an argument to read_file to read the original text
     //  * Pass that to disemvowel to remove the vowels
@@ -26,10 +31,10 @@ fn main() {
     let input_file = &args[1];
     let output_file = &args[2];
 
-    let input_text = read_file(Path::new(input_file));
+    let s = read_file(Path::new(input_file));
 
     // Disemvowel the text
-    let disemvoweled_text = disemvowel(&input_text);
+    let disemvoweled_text = disemvowel(&s);
 
     // Write the disemvoweled text to the output file
     write_file(Path::new(output_file), &disemvoweled_text);

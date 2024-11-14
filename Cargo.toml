@@ -12,7 +12,7 @@ assert_cmd = "0.10"
 predicates = "1"
 
 [[bin]]
-name = "disemvowel"
+name = "disemvowel-in-rust"
 path = "disemvowel/main.rs"
 
 [[bin]]
